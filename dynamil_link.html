@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+    <p>Next Stream is:</p>
+
+    <a id="LiveStreamLinkUrl" href="#" >Location 1 Hyperlink</a>
+    <p></p>
+    <a id="LiveStreamLinkUrl2" href="#" >Location 2 Hyperlink</a>
+    <p id="LiveStreamLink"></p>
+
+
+<script>
+    var today = new Date();                  // New date object Blank () means today
+    let todayDay = today.getDate();          // get today's Day
+    let todayMonth = today.getMonth()+1;     //0-11 Get today's month returns 0-11 so have to shift acordingly with the +1
+    let todayFullYear = today.getFullYear(); // Get the year.
+    const str = `${todayMonth}/${todayDay}/${todayFullYear}`; //Assign variables into a readable format "mm/dd/yyyy"
+    console.log("Today is: ",str)            //Prints to console for debugging. 
+
+    //define links [Key/date,Link]
+    var nestedArray=[
+        ['07/17/2022','https://youtu.be/7wwWy95dJXI'],
+        ['07/24/2022','https://youtu.be/KJkzEvoEyLg'],
+        ['07/31/2022','https://youtu.be/TzBj91m8mYI'],
+        ['08/07/2022','https://youtu.be/9QX8tIdfOeA'],
+        ['08/14/2022','https://youtu.be/uTv_gAKUuR4'],
+        ['08/21/2022','https://youtu.be/JEuKDoqjCvU'],
+        ['08/28/2022','https://youtu.be/3dMTHEXblRY'],
+        ['09/04/2022','https://youtu.be/C8mIes4e_Rs'],
+        ['09/11/2022','https://youtu.be/pn4CDExolSY'],
+        ['09/18/2022','https://youtu.be/T9y_6Z0KZng'],
+        ['09/25/2022','https://youtu.be/5jpn0kXeCWg'],
+        ['10/02/2022','https://youtu.be/LZzje_SSRkc'],
+        ['10/09/2022','https://youtu.be/2lA7CRvojNE'],
+        ['10/16/2022','https://youtu.be/PY1cpvGPhmU'],
+        ['10/23/2022','https://youtu.be/c8NAv4GnyFA'],
+        ['10/30/2022','https://youtu.be/5l3sMUhwdGs'],
+        ['11/06/2022','https://youtu.be/mvF0qNmLmk8'],
+        ['11/13/2022','https://youtu.be/Fh9xtTI8PUc'],
+        ['11/20/2022','https://youtu.be/DOZ0fDf_DRk'],
+        ['11/27/2022','https://youtu.be/KD_rA1VChBs'],
+        ['12/04/2022','https://youtu.be/PLAvWTkC3dw'],
+        ['12/11/2022','https://youtu.be/aGbcOqQwQic'],
+        ['12/18/2022','https://youtu.be/1DghulzQpTg'],
+        ['12/25/2022','https://youtu.be/D0x2sXCTgGc'],
+        ['01/01/2023','https://youtu.be/QD6Vc2B34eY'],
+        ['01/08/2023','https://youtu.be/UEDsYF1MXkE'],
+        ['01/15/2023','https://youtu.be/eHLzjZ9SV-o'],
+        ['01/22/2023','https://youtu.be/xbEe2rzrxYM'],
+        ['01/29/2023','https://youtu.be/JxmphMtxbQs'],
+        ['02/05/2023','https://youtu.be/wWbAfMPKX3Q'],
+        ['02/12/2023','https://youtu.be/N7cZ4CWE9Ig'],
+        ['02/19/2023','https://youtu.be/DpAoUNgCHOk'],
+        ['02/26/2023','https://youtu.be/7Cbf94WT6Bg'],
+        ['03/05/2023','https://youtu.be/BxnJfJzuIKg'],
+        ['03/12/2023','https://youtu.be/JUjjgMG4UR4'],
+        ['03/19/2023','https://youtu.be/8BRG9qX0CEk'],
+        ['03/26/2023','https://youtu.be/-Z9drQ88SHU'],
+        ['04/02/2023','https://youtu.be/4FOKeUaZbIU'],
+        ['04/09/2023','https://youtu.be/Lr4clSlhazw'],
+        ['04/16/2023','https://youtu.be/EmwoOgkphBo'],
+        ['04/23/2023','https://youtu.be/xnjZ5F_1_u4'],
+        ['04/30/2023','https://youtu.be/b5zVLm8fCPY'],
+        ['05/07/2023','https://youtu.be/XqeYLfEu-h8'],
+        ['05/14/2023','https://youtu.be/t1o7HkinNbI'],
+        ['05/21/2023','https://youtu.be/sTNiGbMlF5I'],
+        ['05/28/2023','https://youtu.be/al028iRGdG4'],
+        ['06/04/2023','https://youtu.be/h8dro2iwdbA'],
+        ['06/11/2023','https://youtu.be/NDrSMc5acwo'],
+        ['06/18/2023','https://youtu.be/2MnfmHneAWA'],
+        ['06/25/2023','https://youtu.be/k2i9aAqx8vU'],
+        ['07/02/2023','https://youtu.be/7GqsmBz3lDI'],
+        ['07/09/2023','https://youtu.be/V0WDj3nC6E4'],
+        ['07/16/2023','https://youtu.be/dEV-YhQNGaw'],
+        ['07/23/2023','https://youtu.be/kToQoeY1DxI'],
+        ['07/30/2023','https://youtu.be/tIGjWWKo08c'],
+        ['08/06/2023','https://youtu.be/HxPa7-H0eLo'],
+        ['08/13/2023','https://youtu.be/OoqWcBSWeMI'],
+        ['08/20/2023','https://youtu.be/WsJOu3Khr38'],
+        ['08/27/2023','https://youtu.be/eCFM7AwvI6U'],
+        ['09/03/2023','https://youtu.be/Tl1pc289NKQ'],
+        ['09/10/2023','https://youtu.be/7hvZN2awkuI'],
+        ['09/17/2023','https://youtu.be/Ye2PLKVDEnQ'],
+        ['09/24/2023','https://youtu.be/0UdsG1ss9k0'],
+        ['10/01/2023','https://youtu.be/pJglsESwPDo'],
+        ['10/08/2023','https://youtu.be/2yAPjOza6qo'],
+        ['10/15/2023','https://youtu.be/iMmwLBkBAeA'],
+        ['10/22/2023','https://youtu.be/IulRGQU3-ZM'],
+        ['10/29/2023','https://youtu.be/3VHzxcRhI84'],
+        ['11/05/2023','https://youtu.be/2QGWt5rX8PM'],
+        ['11/12/2023','https://youtu.be/nsZ-OCJF56A'],
+        ['11/19/2023','https://youtu.be/IXI6AM1oflc'],
+        ['11/26/2023','https://youtu.be/Uj1i5nY_Cvo'],
+        ['12/03/2023','https://youtu.be/J1tjEruOCjc'],
+        ['12/10/2023','https://youtu.be/iS9KfV32HYc'],
+        ['12/17/2023','https://youtu.be/Hd-2Bu0Z2oM'],
+        ['12/24/2023','https://youtu.be/YHqFKUxat3M'],
+        ['12/31/2023','https://youtu.be/VXHorinxU-I'],
+        ['01/07/2024','https://youtu.be/hHddCvKBCNw'],
+        ['01/14/2024','https://youtu.be/gazTAWQ1o7w'],
+        ['01/21/2024','https://youtu.be/uyqhtGAZgYA'],
+    ];
+
+    var linkHolder = "https://www.youtube.com/channel/UCiaT-ecr1KSBHLll_tOI1jQ" // YouTube channel place holder. If the date is not found.
+    for (let i = 0; i < nestedArray.length; i++) {      //loops through each entry in the nested array.
+        var dateArray =  nestedArray[i][0].split("/");  //plits date into an array [mm,dd,yyyy] with index of [0,1,2]
+        var dateTemp = new Date(dateArray[2] + '/' + dateArray[0] + '/' + dateArray[1]); // reformats date to be able to compare using > or <
+        if (str == nestedArray[i][0]){                  // if today is the day of a assigned stream then it will assign the link to the linkHolder. 
+            console.log("The next stream is:",nestedArray[i][0]," with a link of:",nestedArray[i][1]) // prints to console to help with debugging.
+            linkHolder= nestedArray[i][1]
+            break //if true stop loop
+        }else if (today < dateTemp){                    // if the stream is not today it will assign the upcomming link.
+            console.log("The next stream is:",nestedArray[i][0]," with a link of:",nestedArray[i][1]) // prints to console to help with debugging.
+            linkHolder= nestedArray[i][1]
+            break //if true stop loop
+        }
+    }
+    console.log("linkHolder: ",linkHolder)              //prints to consol the assigned link
+    // for first location for the url to show as text
+    document.getElementById("LiveStreamLink").innerHTML = linkHolder; // make a public variable to be used in the html file. use the Id "LiveStreamLink"
+    // for second link location
+    var element = document.getElementById('LiveStreamLinkUrl'); // gets the place holder in the html code for the hyperlink using the id LiveStreamLinkUrl
+    element.setAttribute("href",linkHolder) // assigns a new hyperlink to that placeholder. 
+    // for the second element using a hyperlink
+    var element = document.getElementById('LiveStreamLinkUrl2'); // same for the first isntance but since it is a new location needs a new id thus the code has to be repeated. 
+    element.setAttribute("href",linkHolder) // assigns a new hyperlink to that placeholder. 
+</script>
+</body>
+</html>
